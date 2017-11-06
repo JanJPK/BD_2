@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using BD2.Models;
 
 namespace BD2
 {
@@ -23,6 +24,15 @@ namespace BD2
         public MainWindow()
         {
             InitializeComponent();
+            //using (var context = new ShopContext())
+            //{
+            //    context.Manufacturers.Add(new Manufacturer(1, "UVZ", "Uralvagonzavod", "Russia"));
+            //    context.Manufacturers.Add(new Manufacturer(2, "KhPZ", "Kharkiv Locomotive Factory", "Russia"));
+            //    context.Manufacturers.Add(new Manufacturer(3, "KMZ", " Kurganmashzavod", "Russia"));
+            //    context.Manufacturers.Add(new Manufacturer(4, "FIMMF", "First Inner Mongolia Machinery Factory", "China"));
+            //    context.Manufacturers.Add(new Manufacturer(5, "ROF", "Royal Ordnance Factory", "United Kingdom"));
+            //    context.SaveChanges();
+            //} 
         }
     }
 }
