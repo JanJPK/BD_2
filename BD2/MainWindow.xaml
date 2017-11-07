@@ -11,23 +11,44 @@
     <!-- Height="{x:Static SystemParameters.PrimaryScreenHeight}" 
         Width="{x:Static SystemParameters.PrimaryScreenWidth}" -->
     <Grid>
+        <!-- Background image -->
         <Image x:Name="ImageBackground" Source="Resources/digital_camo.png" Stretch="Fill"/>
-        <Image x:Name="ImageLogo" Source="Resources/tank_star.png" HorizontalAlignment="Left" Height="120" Margin="24,0,0,0" VerticalAlignment="Top" Width="158"/>
 
-        <TabControl Margin="24,125,24,24">
-            <TabItem Header="TabItem">
+        <!-- Main tab control -->
+        <TabControl x:Name="TabControlMain" Visibility="Visible" Margin="24,10,24,24" Background="Transparent" BorderBrush="#00ACACAC">
+            <!-- Logging in -->
+            <TabItem x:Name="TabLogin" Header="TabItem">
+                <Grid Background="#CC000000">
+                    <!-- Logo -->
+                    <Image Source="Resources/warlord_logo.png" Margin="100,20,100,0" Height="287" VerticalAlignment="Top"/>
+                    <!-- Login controls -->
+                    <GroupBox Background="#B2213534" BorderBrush="#00D5DFE5" BorderThickness="0" Height="137" Margin="260,350,260,0" VerticalAlignment="Top" HorizontalAlignment="Center">
+                        <Grid>
+                            <TextBox x:Name="TextBoxUsername" Text="Username" Height="26" Margin="10,10,10,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="18" HorizontalAlignment="Center" Width="186"/>
+                            <PasswordBox x:Name="PasswordBoxUserPassword" Password="XXXX" Margin="10,39,10,0" VerticalAlignment="Top" Height="26" FontSize="18" HorizontalAlignment="Center" Width="186"/>
+                            <Button x:Name="ButtonUserLogin" Content="LOGIN" Margin="10,70,10,0" VerticalAlignment="Top" Width="186" Height="26" FontSize="16" FontFamily="Segoe UI Semibold"/>
+                            <Button x:Name="ButtonUserLoginGuest" Content="GUEST LOGIN" Margin="10,101,10,0" Width="186" Height="26" VerticalAlignment="Top" FontSize="16" FontFamily="Segoe UI Semibold"/>
+                        </Grid>
+                    </GroupBox>
+                </Grid>
+            </TabItem>
+            
+            <!-- Product browsing -->
+            <TabItem x:Name="TabBrowse" Header="TabItem">
                 <Grid Background="#FFE5E5E5"/>
             </TabItem>
-            <TabItem Header="TabItem">
+
+            <!-- Placing order -->
+            <TabItem x:Name="TabOrder" Header="TabItem">
+                <Grid Background="#FFE5E5E5"/>
+            </TabItem>
+
+            <!-- Managing database -->
+            <TabItem x:Name="TabManage" Header="TabItem">
                 <Grid Background="#FFE5E5E5"/>
             </TabItem>
         </TabControl>
-        <Frame x:Name="FrameUserLoginControls" HorizontalAlignment="Right" Height="33" Margin="433,10,24,0" VerticalAlignment="Top" Width="335" Background="#B2213534"/>
-        <TextBox x:Name="TextBoxUsername" HorizontalAlignment="Right" Height="23" Margin="0,15,109,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
-        <Button x:Name="ButtonUserLogin" Content="Log in&#xD;&#xA;" HorizontalAlignment="Right" Margin="0,15,29,0" VerticalAlignment="Top" Width="75" Height="23"/>
-        <PasswordBox x:Name="PasswordBoxUserPassword" HorizontalAlignment="Right" Margin="0,15,234,0" VerticalAlignment="Top" Width="120" Height="23"/>
-        <Frame x:Name="FrameUserLoginConfirmation" HorizontalAlignment="Right" Height="33" Margin="0,43,24,0" VerticalAlignment="Top" Width="205" Background="#B2213534"/>
-        <TextBox x:Name="TextBoxUsernameConfirmation" HorizontalAlignment="Right" Height="23" Margin="0,48,29,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="195" Background="Transparent" BorderBrush="#00ABADB3" FontFamily="Segoe UI Semibold" Foreground="White"/>
+
 
     </Grid>
 </Window>

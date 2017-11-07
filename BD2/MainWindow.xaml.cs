@@ -24,6 +24,7 @@ namespace BD2
         public MainWindow()
         {
             InitializeComponent();
+            TabLogin.IsSelected = true;
             //using (var context = new ShopContext())
             //{
             //    context.Manufacturers.Add(new Manufacturer(1, "UVZ", "Uralvagonzavod", "Russia"));
