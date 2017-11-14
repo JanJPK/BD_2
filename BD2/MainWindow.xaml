@@ -6,46 +6,208 @@
         xmlns:local="clr-namespace:BD2"
         mc:Ignorable="d"
         Title="MainWindow"
-        Height="600" 
-        Width="800" MinWidth="800" MinHeight="600">
+        Height="750"
+        MinHeight="750"
+        Width="1000"
+        MinWidth="1000">
     <!-- Height="{x:Static SystemParameters.PrimaryScreenHeight}" 
         Width="{x:Static SystemParameters.PrimaryScreenWidth}" -->
+    <!-- Styles -->
+    <Window.Resources>
+        <Style x:Key="TabControlTransparent" TargetType="TabControl">
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="BorderBrush" Value="#00ACACAC" />
+            <Setter Property="Visibility" Value="Visible" />
+        </Style>
+        <Style x:Key="GridDesert" TargetType="Grid">
+            <Setter Property="Background" Value="#CC0C0B0B" />
+        </Style>
+        <Style x:Key="GridDark" TargetType="Grid">
+            <Setter Property="Background" Value="#B2101312" />
+        </Style>
+        <Style x:Key="GroupBoxDark" TargetType="GroupBox">
+            <Setter Property="Background" Value="#B2101312" />
+            <Setter Property="BorderBrush" Value="#00D5DFE5" />
+            <Setter Property="BorderThickness" Value="0" />
+        </Style>
+        <Style x:Key="TextBoxDark" TargetType="TextBox">
+            <Setter Property="Height" Value="26" />
+            <Setter Property="FontSize" Value="16" />
+            <Setter Property="FontFamily" Value="Segoe UI" />
+            <Setter Property="CharacterCasing" Value="Upper" />
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="Background" Value="#FF111111" />
+            <Setter Property="SelectionBrush" Value="#FF796F58" />
+            <Setter Property="BorderBrush" Value="#FF796F58" />
+        </Style>
+        <Style x:Key="LabelDark" TargetType="Label">
+            <Setter Property="Height" Value="26" />
+            <Setter Property="FontSize" Value="16" />
+            <Setter Property="FontFamily" Value="Segoe UI" />
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="Background" Value="Transparent" />
+        </Style>
+        <Style x:Key="ComboBoxItemDark" TargetType="ComboBoxItem">
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="Background" Value="#FF111111" />
+            <Setter Property="BorderBrush" Value="#FF796F58" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ComboBoxItem}">
+                        <Border Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Foreground" Value="#FF7EB4EA" />
+                    <Setter Property="Background" Value="#FF111111" />
+                </Trigger>
+                <Trigger Property="IsSelected" Value="True">
+                    <Setter Property="Foreground" Value="#FF796F58" />
+                    <Setter Property="Background" Value="#FF111111" />
+                    <Setter Property="BorderBrush" Value="#FF796F58" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <Style x:Key="ComboBoxDark" TargetType="ComboBox">
+            <Setter Property="IsEditable" Value="True"></Setter>
+            <Setter Property="Height" Value="26" />
+            <Setter Property="FontSize" Value="18" />
+            <Setter Property="FontFamily" Value="Segoe UI" />
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="Background" Value="#FF111111" />
+            <Setter Property="BorderBrush" Value="#FF796F58" />
+            <Setter Property="ItemsSource"  Value="{Binding ComboBoxTest}"></Setter>
+            <Setter Property="ItemContainerStyle" Value="{StaticResource ComboBoxItemDark}"></Setter>
+        </Style>
+        <Style x:Key="PasswordBoxDark" TargetType="PasswordBox">
+            <Setter Property="Height" Value="26" />
+            <Setter Property="FontSize" Value="18" />
+            <Setter Property="FontFamily" Value="Segoe UI" />
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="Background" Value="#FF111111" />
+            <Setter Property="SelectionBrush" Value="#FF796F58" />
+            <Setter Property="BorderBrush" Value="#FF796F58" />
+        </Style>
+        <Style x:Key="ButtonDark" TargetType="Button">
+            <Setter Property="Height" Value="26" />
+            <Setter Property="FontSize" Value="18" />
+            <Setter Property="FontFamily" Value="Segoe UI" />
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="BorderBrush" Value="#FF796F58" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <!--<Setter Property="Foreground" Value="#FF796F58"/>-->
+                    <Setter Property="Foreground" Value="#FF7EB4EA" />
+                    <Setter Property="Background" Value="#FF111111" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <Style x:Key="DataGridDark" TargetType="DataGrid">
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="Background" Value="#FF111111" />
+            <Setter Property="BorderBrush" Value="#FF796F58" />
+        </Style>
+    </Window.Resources>
+
+    <!-- Main grid -->
     <Grid>
         <!-- Background image -->
-        <Image x:Name="ImageBackground" Source="Resources/digital_camo.png" Stretch="Fill"/>
-
+        <Image x:Name="ImageBackground" Source="Resources/digital_camo_light.png" Stretch="Fill" />
         <!-- Main tab control -->
-        <TabControl x:Name="TabControlMain" Visibility="Visible" Margin="24,10,24,24" Background="Transparent" BorderBrush="#00ACACAC">
+        <TabControl x:Name="TabControlMain" Style="{StaticResource TabControlTransparent}" Margin="24,10,24,24">
             <!-- Logging in -->
             <TabItem x:Name="TabLogin" Header="TabItem">
-                <Grid Background="#CC000000">
+                <Grid Style="{StaticResource GridDesert}">
                     <!-- Logo -->
-                    <Image Source="Resources/warlord_logo.png" Margin="100,20,100,0" Height="287" VerticalAlignment="Top"/>
+                    <Image Source="Resources/warlord_logo_light.png" Margin="100,20,100,0" Height="287"
+                           VerticalAlignment="Top" />
                     <!-- Login controls -->
-                    <GroupBox Background="#B2213534" BorderBrush="#00D5DFE5" BorderThickness="0" Height="137" Margin="260,350,260,0" VerticalAlignment="Top" HorizontalAlignment="Center">
+                    <GroupBox Style="{StaticResource GroupBoxDark}" Height="137" Margin="250,350,250,0"
+                              VerticalAlignment="Top" HorizontalAlignment="Center">
                         <Grid>
-                            <TextBox x:Name="TextBoxUsername" Text="Username" Height="26" Margin="10,10,10,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="18" HorizontalAlignment="Center" Width="186"/>
-                            <PasswordBox x:Name="PasswordBoxUserPassword" Password="XXXX" Margin="10,39,10,0" VerticalAlignment="Top" Height="26" FontSize="18" HorizontalAlignment="Center" Width="186"/>
-                            <Button x:Name="ButtonUserLogin" Content="LOGIN" Margin="10,70,10,0" VerticalAlignment="Top" Width="186" Height="26" FontSize="16" FontFamily="Segoe UI Semibold"/>
-                            <Button x:Name="ButtonUserLoginGuest" Content="GUEST LOGIN" Margin="10,101,10,0" Width="186" Height="26" VerticalAlignment="Top" FontSize="16" FontFamily="Segoe UI Semibold"/>
+                            <TextBox x:Name="TextBoxUsername" Style="{StaticResource TextBoxDark}" Text="USERNAME"
+                                     Margin="10,10,10,0" TextWrapping="Wrap" VerticalAlignment="Top"
+                                     HorizontalAlignment="Center" Width="186" GotFocus="TextBoxUsername_GotFocus"
+                                     LostFocus="TextBoxUsername_LostFocus" />
+                            <PasswordBox x:Name="PasswordBoxUserPassword" Style="{StaticResource PasswordBoxDark}"
+                                         Password="XXXX" Margin="10,39,10,0" VerticalAlignment="Top"
+                                         HorizontalAlignment="Center" Width="186"
+                                         GotFocus="PasswordBoxUserPassword_GotFocus"
+                                         LostFocus="PasswordBoxUserPassword_LostFocus" />
+                            <Button x:Name="ButtonUserLogin" Style="{StaticResource ButtonDark}" Content="LOGIN"
+                                    Margin="10,70,10,0" VerticalAlignment="Top" Width="186" />
+                            <Button x:Name="ButtonUserLoginGuest" Style="{StaticResource ButtonDark}"
+                                    Content="GUEST LOGIN" Margin="10,101,10,0" Width="186" VerticalAlignment="Top" />
                         </Grid>
                     </GroupBox>
                 </Grid>
             </TabItem>
-            
+
             <!-- Product browsing -->
             <TabItem x:Name="TabBrowse" Header="TabItem">
-                <Grid Background="#FFE5E5E5"/>
+                <Grid Style="{StaticResource GridDesert}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <GroupBox x:Name="GroupBoxSearch" Style="{StaticResource GroupBoxDark}" Height="100"
+                              Margin="15,15,15,0" VerticalAlignment="Top">
+                        <Grid>
+                            <TextBox x:Name="TextBoxBrowseSearch" Style="{StaticResource TextBoxDark}"
+                                     HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="285"
+                                     FontFamily="Segoe UI Light"
+                                     LostFocus="TextBoxBrowseSearch_LostFocus" GotFocus="TextBoxBrowseSearch_GotFocus" />
+                            <ComboBox x:Name="ComboBoxSearchModel" Style="{StaticResource ComboBoxDark}" HorizontalAlignment="Left" Margin="155,41,0,0" VerticalAlignment="Top" Width="140" IsEditable="True"/>
+                            <ComboBox x:Name="ComboBoxSearchManufacturer" Style="{StaticResource ResourceKey=ComboBoxDark}" HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top" Width="140" IsEditable="True"/>
+                            <TextBox x:Name="TextBoxBrowseSearchNewerThan" Style="{StaticResource TextBoxDark}"
+                                HorizontalAlignment="Left" Margin="300,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="100"
+                                FontFamily="Segoe UI Light"
+                                LostFocus="TextBoxBrowseSearchNewerThan_LostFocus" GotFocus="TextBoxBrowseSearchNewerThan_GotFocus" />
+                            <TextBox x:Name="TextBoxBrowseSearchOlderThan" Style="{StaticResource TextBoxDark}"
+                                HorizontalAlignment="Left" Margin="405,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="100"
+                                FontFamily="Segoe UI Light"
+                                LostFocus="TextBoxBrowseSearchOlderThan_LostFocus" GotFocus="TextBoxBrowseSearchOlderThan_GotFocus" />
+                        </Grid>
+                    </GroupBox>
+
+                    <GroupBox x:Name="GroupBoxSearchResults" Style="{StaticResource GroupBoxDark}"
+                              Margin="15,120,320,15">
+                        <Grid>
+                            <DataGrid x:Name="DataGridSearchResults" Style="{StaticResource DataGridDark}" HorizontalAlignment="Left" Height="496"
+                                      Margin="10,10,0,0" VerticalAlignment="Top" Width="571" />
+                        </Grid>
+                    </GroupBox>
+                    <GroupBox x:Name="GroupBoxSearchResultsDetails" Style="{StaticResource GroupBoxDark}"
+                              Margin="623,120,15,15">
+                        <Grid>
+                            <Image x:Name="ImageSearchResultsDetails" Source="Resources/tank_image_background_dark.png" Stretch="Fill" Height="263" Margin="15,15,15,0" VerticalAlignment="Top"/>
+                        </Grid>
+                    </GroupBox>
+
+                </Grid>
             </TabItem>
 
             <!-- Placing order -->
             <TabItem x:Name="TabOrder" Header="TabItem">
-                <Grid Background="#FFE5E5E5"/>
+                <Grid Style="{StaticResource GridDesert}" />
             </TabItem>
 
             <!-- Managing database -->
             <TabItem x:Name="TabManage" Header="TabItem">
-                <Grid Background="#FFE5E5E5"/>
+                <Grid Style="{StaticResource GridDesert}" />
             </TabItem>
         </TabControl>
 

@@ -21,10 +21,29 @@ namespace BD2
     /// </summary>
     public partial class MainWindow : Window
     {
+        private static readonly string defaultUsername = "USERNAME";
+        private static readonly string defaultPassword = "XXXXX";
+        private static readonly string defaultSearchMessage = "Search by model name...";
+        private static readonly string defaultYearOlderThan = "Older than...";
+        private static readonly string defaultYearNewerThan = "Newer than...";
+
+        private static ViewModel vm;
+
         public MainWindow()
         {
             InitializeComponent();
-            TabLogin.IsSelected = true;
+            vm = new ViewModel();
+            DataContext = vm;
+                
+            TextBoxUsername.Text = defaultUsername;
+            PasswordBoxUserPassword.Password = defaultPassword;
+            TextBoxBrowseSearch.Text = defaultSearchMessage;
+            TextBoxBrowseSearchOlderThan.Text = defaultYearOlderThan;
+            TextBoxBrowseSearchNewerThan.Text = defaultYearNewerThan;
+
+            //TabLogin.IsSelected = true;
+            TabBrowse.IsSelected = true;
+
             //using (var context = new ShopContext())
             //{
             //    context.Manufacturers.Add(new Manufacturer(1, "UVZ", "Uralvagonzavod", "Russia"));
@@ -35,5 +54,88 @@ namespace BD2
             //    context.SaveChanges();
             //} 
         }
+
+        #region TextBox Got/Lost Focus
+        private void TextBoxUsername_GotFocus(object sender, RoutedEventArgs e)
+        {
+            if(TextBoxUsername.Text == defaultUsername)
+            {
+                TextBoxUsername.Text = "";
+            }
+        }
+
+        private void TextBoxUsername_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(TextBoxUsername.Text))
+            {
+                TextBoxUsername.Text = defaultUsername;
+            }
+        }
+
+        private void PasswordBoxUserPassword_GotFocus(object sender, RoutedEventArgs e)
+        {
+            if (PasswordBoxUserPassword.Password == defaultPassword)
+            {
+                PasswordBoxUserPassword.Password = "";
+            }    
+        }
+        private void PasswordBoxUserPassword_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(PasswordBoxUserPassword.Password))
+            {
+                PasswordBoxUserPassword.Password = defaultPassword;
+            }
+        }
+
+        private void TextBoxBrowseSearch_GotFocus(object sender, RoutedEventArgs e)
+        {
+            if (TextBoxBrowseSearch.Text == defaultSearchMessage)
+            {
+                TextBoxBrowseSearch.Text = "";
+            }
+        }
+
+        private void TextBoxBrowseSearch_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(TextBoxBrowseSearch.Text))
+            {
+                TextBoxBrowseSearch.Text = defaultSearchMessage;
+            }
+        }
+
+        private void TextBoxBrowseSearchOlderThan_GotFocus(object sender, RoutedEventArgs e)
+        {
+            if (TextBoxBrowseSearchOlderThan.Text == defaultYearOlderThan)
+            {
+                TextBoxBrowseSearchOlderThan.Text = "";
+            }
+        }
+
+        private void TextBoxBrowseSearchOlderThan_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(TextBoxBrowseSearchOlderThan.Text))
+            {
+                TextBoxBrowseSearchOlderThan.Text = defaultYearOlderThan;
+            }
+        }
+
+        private void TextBoxBrowseSearchNewerThan_GotFocus(object sender, RoutedEventArgs e)
+        {
+            if (TextBoxBrowseSearchNewerThan.Text == defaultYearNewerThan)
+            {
+                TextBoxBrowseSearchNewerThan.Text = "";
+            }
+        }
+
+        private void TextBoxBrowseSearchNewerThan_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(TextBoxBrowseSearchNewerThan.Text))
+            {
+                TextBoxBrowseSearchNewerThan.Text = defaultYearNewerThan;
+            }
+        }
+        #endregion
+
+
     }
 }

@@ -73,6 +73,46 @@ namespace BD2.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap digital_camo_dark {
+            get {
+                object obj = ResourceManager.GetObject("digital_camo_dark", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap digital_camo_light {
+            get {
+                object obj = ResourceManager.GetObject("digital_camo_light", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap tank_image_background_dark {
+            get {
+                object obj = ResourceManager.GetObject("tank_image_background_dark", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap tank_image_background_light {
+            get {
+                object obj = ResourceManager.GetObject("tank_image_background_light", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap tank_star {
             get {
                 object obj = ResourceManager.GetObject("tank_star", resourceCulture);
@@ -86,6 +126,16 @@ namespace BD2.Properties {
         internal static System.Drawing.Bitmap warlord_logo {
             get {
                 object obj = ResourceManager.GetObject("warlord_logo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap warlord_logo_light {
+            get {
+                object obj = ResourceManager.GetObject("warlord_logo_light", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
