@@ -1,32 +1,52 @@
-﻿namespace BD2.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace BD2.Models
 {
     internal class VehicleModel
     {
-        public int VehicleModelID { get; set; }
-        public string ImagePath { get; set; }
-        public string Name { get; set; }
-        public string MainArmament { get; set; }
-        public string SecondaryArmament { get; set; }
-        public int Crew { get; set; }
-        public float Weight { get; set; }
-        public string Engine { get; set; }
-        public int EnginePower { get; set; }
-        public Manufacturer ManufacturerID { get; set; }
+        [Key]
+        public int ID { get; set; }
 
-        public VehicleModel(int vehicleModelID, string name, string imagePath, string mainArmament,
+        [Required]
+        [StringLength(20)]
+        public string Name { get; set; }
+
+        [Required]
+        [StringLength(30)]
+        public string MainArmament { get; set; }
+
+        [StringLength(30)]
+        public string SecondaryArmament { get; set; }
+
+        [Required]
+        public int Crew { get; set; }
+
+        [Required]
+        public float Weight { get; set; }
+
+        [Required]
+        [StringLength(20)]
+        public string Engine { get; set; }
+
+        [Required]
+        public int EnginePower { get; set; }
+
+        [Required]
+        public Manufacturer Manufacturer { get; set; }
+
+        public VehicleModel(int id, string name, string mainArmament,
             string secondaryArmament, int crew, float weight, string engine, int enginePower,
-            Manufacturer manufacturerID)
+            Manufacturer manufacturer)
         {
-            VehicleModelID = vehicleModelID;
+            ID = id;
             Name = name;
-            ImagePath = imagePath;
             MainArmament = mainArmament;
             SecondaryArmament = secondaryArmament;
             Crew = crew;
             Weight = weight;
             Engine = engine;
             EnginePower = enginePower;
-            ManufacturerID = manufacturerID;
+            Manufacturer = manufacturer;
         }
     }
 }

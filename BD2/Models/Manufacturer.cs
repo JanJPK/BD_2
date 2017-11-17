@@ -1,15 +1,27 @@
-﻿namespace BD2.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace BD2.Models
 {
     internal class Manufacturer
     {
-        public int ManufacturerID { get; set; }
+        [Key]
+        public int ID { get; set; }
+
+        [Required]
+        [StringLength(10)]
         public string ShortName { get; set; }
+
+        [Required]
+        [StringLength(50)]
         public string FullName { get; set; }
+
+        [Required]
+        [StringLength(20)]
         public string Country { get; set; }
 
-        public Manufacturer(int manufacturerID, string shortName, string fullName, string country)
+        public Manufacturer(int id, string shortName, string fullName, string country)
         {
-            ManufacturerID = manufacturerID;
+            ID = id;
             ShortName = shortName;
             FullName = fullName;
             Country = country;

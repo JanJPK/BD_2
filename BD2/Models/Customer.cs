@@ -1,19 +1,33 @@
-﻿namespace BD2.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace BD2.Models
 {
     internal class Customer
     {
-        public int CustomerID { get; set; }
+        [Key]
+        public int ID { get; set; }
+
+        [Required]
         public string Name { get; set; }
+
         public int? Phone { get; set; }
+
+        [Required]
         public string Address { get; set; }
+
+        [Required]
         public string PostalCode { get; set; }
+
+        [Required]
         public string City { get; set; }
+
+        [Required]
         public string Country { get; set; }
 
-        public Customer(int customerID, string name, int? phone, string address, string postalCode, string city,
+        public Customer(int id, string name, int? phone, string address, string postalCode, string city,
             string country)
         {
-            CustomerID = customerID;
+            ID = id;
             Name = name;
             Phone = phone;
             Address = address;

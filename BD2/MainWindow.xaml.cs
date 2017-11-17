@@ -44,15 +44,16 @@ namespace BD2
             //TabLogin.IsSelected = true;
             TabBrowse.IsSelected = true;
 
-            //using (var context = new ShopContext())
-            //{
-            //    context.Manufacturers.Add(new Manufacturer(1, "UVZ", "Uralvagonzavod", "Russia"));
-            //    context.Manufacturers.Add(new Manufacturer(2, "KhPZ", "Kharkiv Locomotive Factory", "Russia"));
-            //    context.Manufacturers.Add(new Manufacturer(3, "KMZ", " Kurganmashzavod", "Russia"));
-            //    context.Manufacturers.Add(new Manufacturer(4, "FIMMF", "First Inner Mongolia Machinery Factory", "China"));
-            //    context.Manufacturers.Add(new Manufacturer(5, "ROF", "Royal Ordnance Factory", "United Kingdom"));
-            //    context.SaveChanges();
-            //} 
+            using (var context = new ShopContext())
+            {
+                PopulateDatabase(context);
+                //    context.Manufacturers.Add(new Manufacturer(1, "UVZ", "Uralvagonzavod", "Russia"));
+                //    context.Manufacturers.Add(new Manufacturer(2, "KhPZ", "Kharkiv Locomotive Factory", "Russia"));
+                //    context.Manufacturers.Add(new Manufacturer(3, "KMZ", " Kurganmashzavod", "Russia"));
+                //    context.Manufacturers.Add(new Manufacturer(4, "FIMMF", "First Inner Mongolia Machinery Factory", "China"));
+                //    context.Manufacturers.Add(new Manufacturer(5, "ROF", "Royal Ordnance Factory", "United Kingdom"));
+                //    context.SaveChanges();
+            }
         }
 
         #region TextBox Got/Lost Focus
@@ -136,6 +137,18 @@ namespace BD2
         }
         #endregion
 
+        #region Database test
 
+        private void PopulateDatabase(ShopContext context)
+        {
+            context.Manufacturers.Add(new Manufacturer(1, "UVZ", "Uralvagonzavod", "Russia"));
+            context.Manufacturers.Add(new Manufacturer(2, "KhPZ", "Kharkiv Locomotive Factory", "Russia"));
+            context.Manufacturers.Add(new Manufacturer(3, "KMZ", " Kurganmashzavod", "Russia"));
+            context.Manufacturers.Add(new Manufacturer(4, "FIMMF", "First Inner Mongolia Machinery Factory", "China"));
+            context.Manufacturers.Add(new Manufacturer(5, "ROF", "Royal Ordnance Factory", "United Kingdom"));
+
+            context.SaveChanges();
+        }
+        #endregion
     }
 }

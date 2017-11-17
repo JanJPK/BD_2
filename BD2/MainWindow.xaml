@@ -12,6 +12,7 @@
         MinWidth="1000">
     <!-- Height="{x:Static SystemParameters.PrimaryScreenHeight}" 
         Width="{x:Static SystemParameters.PrimaryScreenWidth}" -->
+
     <!-- Styles -->
     <Window.Resources>
         <Style x:Key="TabControlTransparent" TargetType="TabControl">
@@ -127,7 +128,7 @@
     <Grid>
         <!-- Background image -->
         <Image x:Name="ImageBackground" Source="Resources/digital_camo_light.png" Stretch="Fill" />
-        <!-- Main tab control -->
+        <!-- Main TabControl -->
         <TabControl x:Name="TabControlMain" Style="{StaticResource TabControlTransparent}" Margin="24,10,24,24">
             <!-- Logging in -->
             <TabItem x:Name="TabLogin" Header="TabItem">
@@ -160,9 +161,6 @@
             <!-- Product browsing -->
             <TabItem x:Name="TabBrowse" Header="TabItem">
                 <Grid Style="{StaticResource GridDesert}">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                    </Grid.ColumnDefinitions>
                     <GroupBox x:Name="GroupBoxSearch" Style="{StaticResource GroupBoxDark}" Height="100"
                               Margin="15,15,15,0" VerticalAlignment="Top">
                         <Grid>
@@ -186,14 +184,15 @@
                     <GroupBox x:Name="GroupBoxSearchResults" Style="{StaticResource GroupBoxDark}"
                               Margin="15,120,320,15">
                         <Grid>
-                            <DataGrid x:Name="DataGridSearchResults" Style="{StaticResource DataGridDark}" HorizontalAlignment="Left" Height="496"
-                                      Margin="10,10,0,0" VerticalAlignment="Top" Width="571" />
+                            <DataGrid x:Name="DataGridSearchResults" Style="{StaticResource DataGridDark}" Height="496"
+                                      Margin="10,10,10,0" VerticalAlignment="Top" />
                         </Grid>
                     </GroupBox>
                     <GroupBox x:Name="GroupBoxSearchResultsDetails" Style="{StaticResource GroupBoxDark}"
-                              Margin="623,120,15,15">
+                              Margin="0,120,15,15" HorizontalAlignment="Right" Width="300">
                         <Grid>
-                            <Image x:Name="ImageSearchResultsDetails" Source="Resources/tank_image_background_dark.png" Stretch="Fill" Height="263" Margin="15,15,15,0" VerticalAlignment="Top"/>
+                            <Image x:Name="ImageSearchResultsDetails" Source="Resources/tank_image_background_dark.png" Stretch="Fill" Height="258" Margin="15,15,15,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                            <TextBlock HorizontalAlignment="Left" Margin="15,278,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="238" Width="263"/>
                         </Grid>
                     </GroupBox>
 
