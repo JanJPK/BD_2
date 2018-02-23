@@ -5,3 +5,5 @@ Technologies:
 - WPF user interface
 - Entity Framework
 - SQL Server that comes with VS2017
+
+Old prototype, not finished.
